@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+	<title>
+		register
+	</title>
+	<link rel="stylesheet" href="static/css/register.css">
+</head>
+<body bgcolor="white">
+<div class="info">
+
+<h2>EASYFIX partners with hundreds of businesses, across all sectors,
+to create service focused solutions that support and enable your company to have less downtime,
+and more time to drive business.</h2>
+<h3>to work with us please fill the below  form.</h3>
+	</div>
+<div class="reg">
+	<h2 style="padding-top:20px;"> Employee Registration</h2>
+	<hr>
+	<form  action="register" method="post">
+		{% csrf_token %}
+
+		<input  class="in" type="text" name="name" placeholder="name"><br>
+		<input class="in" type="email" name="email" placeholder="email"><br>
+		<input class="in" type="text" name="phone" placeholder="phone number"><br>
+		<input class="in"  type="password" name="passwd" placeholder="enter password"><br>
+		<input class="in" onkeyup="checkpwd(3,4)" type="password" name="" placeholder="comfirm password"><br>
+		<input class="in" type="text" name="qualification" placeholder=" highest qualification"><br>
+	 gender : male<input type="radio" name="gender" value="m">female <input type="radio" name="gender" value="f"><br>
+		<input class="in" id="signup" type="submit" name="" value="register">
+         </form>
+	<h6  id="message" style="color:red; margin-top:-10px;padding-bottom: 10px;">  </h6 >
+		{% if message == 1  %}
+		<h3 style="color:red; padding-bottom:-10px;">user with email exists</h3>
+		{% endif %}
+</div>
+<script >
+	function checkpwd(){
+			var p=document.getElementsByClassName("in")[3].value;
+			var p2 =document.getElementsByClassName("in")[4].value;
+			console.log(p+p2)
+			if(p==p2){
+				document.getElementById("message").innerHTML=" ";
+				document.getElementById("signup").disabled = false;
+
+			}
+			else{
+			document.getElementById("message").innerHTML="passwords does not match";
+			document.getElementById("signup").disabled = true;
+
+		}
+		}
+</script>
+</body>
+</html>
+{% endblock %}

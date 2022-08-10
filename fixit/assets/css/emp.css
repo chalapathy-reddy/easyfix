@@ -1,0 +1,27 @@
+.t {
+    width: 40%;
+    margin: auto;
+    height:350px;
+    margin-top: 54px;
+    background-color:#A3FEFF;
+    border-radius: 6px;
+    border-color: black;
+    text-align: center;
+}
+.in{
+	margin: 15px;
+	border-radius: 10px;
+	width: 70%;
+	height: 40px;
+	text-align: center;
+
+}
+.in:focus {
+        outline: none;
+      }
+.t >h1{;
+margin:0px 0px 10px! 0px ;
+padding-top: 10px;
+border-radius:5px;
+
+}

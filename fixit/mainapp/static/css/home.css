@@ -1,0 +1,21 @@
+select{
+	 	font-size: 20px;
+	 	padding: 2px;
+	 	border-collapse: collapse;
+	 	border-radius: 4px;
+	 }
+	#add{
+	background-color :cornsilk;
+	width:50%;
+	}
+	input{
+	padding:1.5px;
+	margin:5px;
+	font-size: 15px;
+	}
+	textarea{
+	padding:1em;
+	margin:5px;
+	font-size: 15px;
+
+	}

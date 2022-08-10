@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content %}
+<html>
+<head>
+	<title>login
+	</title>
+<link rel="stylesheet" href="static/css/login.css">
+	<style>
+	body{
+	background-image: url("static/images/2594902.jpg");
+  	background-attachment:fixed;
+  	background-repeat:no-repeat;
+ 	 background-size:100% 100%;}
+	</style>
+</head>
+<body>
+<div style="font-family: Montserrat,sans-serif;">
+	<center><h1>welcome to EASYFIX</h1>
+<h2 style="width:85%">
+	We offers one-stop-shop for repair, service, and technical support for electronic devices and electrical devices , specifically
+Air conditioners ,Refrigrators,microwave ovens, and televisions,washing machines
+we fix a wide range of gadgets that matter to your daily lives.
+</h2></center>
+</div>
+   <center>
+	<div class="t">
+		<h2>Account Login</h2>
+		<form id="login" method="post" action="login">
+			{%  csrf_token  %}
+            <input class="in" type="text" name="username" placeholder="Username or Email"   required><br>
+			<input class="in"type="password" name="passwd" placeholder="your password"  required ><br>
+
+			<input class="in" type="submit" name="login" value="Login"><br>
+			<br>
+		</form>
+		{% if message != None %}
+		<div style="color:red">{{message}}</div>
+		{% endif %}
+	</div>
+
+	</center>
+
+</body>
+</html>
+{% endblock %}

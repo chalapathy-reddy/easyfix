@@ -1,0 +1,103 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>home</title>
+	<style>
+		#show{
+		margin:30px;
+		padding:5px;
+		}
+		tr,td{
+		padding:5px;
+
+		}
+	</style>
+	<link rel="stylesheet" href="static/css/home.css">
+</head>
+<body>
+{% if message != 0 %}
+ <h3>your request has been taken </h3>
+
+	<div id="show">
+		<table>
+	 	<tr>
+			<td>device name:</td>
+	 	   <td> {{pro.name}}</td>
+		</tr>
+	 	<tr>
+			<td>company:</td>
+	 		<td>{{pro.company}}</td>
+		</tr>
+	 	<tr>
+			<td>model</td>
+	 		<td>{{pro.model}}</td>
+		</tr>
+	 	<tr><td> address:</td>
+	 	<td>{{ser.address}}</td>
+		</tr>
+     <tr>
+		<td>technician </td>
+       		 <td>{{emp.username}}</td>
+	 </tr>
+		<tr>
+			<td>contact details:</td>
+			<td>{{emp.phone}}</td>
+		</tr>
+	</table>
+		<form action="cancel" method="post">
+			{% csrf_token %}
+			<input type="submit" value="cancel the request">
+	</div>
+{% else %}
+<h2> you don't have any request pending </h2>
+	<h3 id="button"> request for a service<button   onclick="add()"> new request</button></h3>
+{% endif %}
+ <div id="add" style="display:none;" >
+	 	<form action="newrequest" method="post">{% csrf_token %}
+	 <table>
+	 	<tr>
+			<td><label for="product">select the product:</label></td>
+	 	   <td><select name='product' id="product">
+	 		<option>Television</option>
+	 		<option>Ac</option>
+	 		<option>Washing machine</option>
+	 		<option>Refrigrator</option>
+	 		<option>Micro oven</option>
+	 	</select> </td>
+		</tr>
+	 	<tr>
+			<td><label for="brand">company:</label></td>
+	 		<td><input id="brand" type="text" name="brand"></td>
+		</tr>
+	 	<tr>
+			<td><label for="model">model no:</label></td>
+	 		<td><input id="model" type="text" name="model"></td>
+		</tr>
+	 	<tr>
+			 <td><label for="phone">phone:</label></td>
+       		 <td><input type="text" name="phone" id="phone"></td>
+		</tr>
+     <tr>
+		<td> <label for="address">address:</label></td>
+	 	<td><textarea id="address" name="address"></textarea></td>
+	 </tr>
+	 	<tr>
+			<td><input type="submit" ></td>
+		</tr>
+		 </table>
+		</form>
+  </div>
+  <script type="text/javascript">
+  	function add(){
+  		document.getElementById('add').style.display="block";
+  		document.getElementById('button').style.display="none";
+  	}
+  </script>
+</body>
+</html>
+<br><br><br><br><br><br><br><br>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="static/css/signup.css">
+</head>
+<body>
+<div style="font-family:sans-serif;">
+	<center><h1>welcome to EASYFIX</h1>
+<h2 style="width:85%">
+	We offers one-stop-shop for repair, service, and technical support for electronic devices and electrical devices , specifically
+Air conditioners ,Refrigrators,microwave ovens, and televisions,washing machines
+we fix a wide range of gadgets that matter to your daily lives.
+</h2></center>
+</div>
+<center>
+<div class="t">
+        <h2>sign up</h2>
+		<form id="signup" method="post" action="signup">
+			{%  csrf_token  %}
+            <input class="in" type="text" name="email" placeholder="Email"   required><br>
+            <input class="in" type="text" name="username" placeholder="name"   required><br>
+			<input class="in" type="password" name="passwd" placeholder="your password"  required><br>
+			<input class="in" type="password" name="con" placeholder="re-enter password"  required onkeyup="checkpwd()" ><br>
+			<input class="in" type="submit" id="login" value="signup" ><br>
+			<h5 style="color:red; margin:5px;"id="message"></h5>
+			<input type="checkbox"   id="check" required style="padding-bottom:10px;" >
+			<label for="check" > I accept all the terms and conditions</label>
+		</form>
+	</div>
+	{% if message != None %}
+		<div style="color:red">{{message}}</div>
+	{% endif %}
+	</center>
+    <script >
+        function checkpwd(){
+			var p=document.getElementsByClassName("in")[2].value;
+			var p2 =document.getElementsByClassName("in")[3].value;
+			if(p==p2){
+				document.getElementById("message").innerHTML=" ";
+				document.getElementById("login").disabled = false;
+
+			}
+			else{
+			document.getElementById("message").innerHTML="passwords does not match";
+			document.getElementById("login").disabled = true;
+
+		}
+		}
+    </script>
+</body>
+</html>
+{% endblock %}

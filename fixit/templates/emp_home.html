@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>employee</title>
+
+</head>
+<body>
+<h2>welcome {{name}}  </h2>
+<h4>your scheduled work  for today</h4>
+     {% if message == 1 %}
+     <table>
+         <tr>
+		<td>customer name:</td>
+       		 <td>{{user.first_name}}</td>
+	 </tr>
+	 	<tr>
+			<td>device:</td>
+	 	   <td> {{pro.name}}</td>
+		</tr>
+	 	<tr>
+			<td>company:</td>
+	 		<td>{{pro.company}}</td>
+		</tr>
+	 	<tr>
+			<td>model number:</td>
+	 		<td>{{pro.model}}</td>
+		</tr>
+	 	<tr><td> customer address:</td>
+	 	<td>{{ser.address}}</td>
+		</tr>
+         <tr><td>service date:</td> <td>{{ser.date}}</td></tr>
+		 <tr><td>
+		 <form action="done" method="post" >
+	{% csrf_token %}
+	<input type="submit" value="update as Done">
+</form></td></tr>
+	</table>
+
+     {% else %}
+ <h2> NO work to assign </h2>
+{% endif %}
+</body>
+</html>
+<br><br><br><br><br><br><br><br><br><br>{% endblock %}

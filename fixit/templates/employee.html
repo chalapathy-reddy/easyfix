@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="static/css/emp.css">
+    <meta charset="UTF-8">
+    <title>emp_login</title>
+</head>
+<body>
+<div class="t">
+    <h1 >Employee Login </h1>
+		<form id="login" method="post" action="employees">
+			{%  csrf_token  %}
+            <input class="in" type="text" name="username" placeholder="Username or Email"   required><br>
+			<input class="in" type="password" name="passwd" placeholder="your password"  required ><br>
+
+			<input class="in" type="submit" name="login" value="Login"><br>
+			<br>
+			<aside style="margin-top:-10px;"><a href='register'>doesn't have an account? signup</a></aside>
+		 </form>
+		{% if message %}
+		<div style="color:red">{{message}}</div>
+		{% endif %}
+</div>
+
+</body>
+</html>
+<br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
